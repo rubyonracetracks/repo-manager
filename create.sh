@@ -5,7 +5,7 @@
 # as succeeding in spite of errors or failures.
 set -eo pipefail
 
-source definitions
+source bin/definitions
 
 mkdir -p $DIR_APP
 echo '# Simple Empty Test App' > "$APP_README"
