@@ -1,6 +1,7 @@
 name: Create
 
 on:
+  push:
   schedule:
     - cron: '13 12 * * *'
 
