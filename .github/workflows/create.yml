@@ -1,0 +1,18 @@
+name: Create
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        LENGTH: ['short', 'medium', 'long']
+
+    env:
+      LENGTH_CI: ${{ matrix.LENGTH }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Create the app
+        run: bash create.sh
