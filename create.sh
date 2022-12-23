@@ -15,6 +15,7 @@ git config --global user.email 'ci@example.com'
 git config --global user.name "Continuous Integration"
 
 cd $DIR_APP && git init
+cd $DIR_APP && git branch -m main
 cd $DIR_APP && git add .
 cd $DIR_APP && git commit -m "Added README.md"
 
