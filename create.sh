@@ -10,3 +10,9 @@ source bin/definitions
 mkdir -p $DIR_APP
 echo '# Simple Empty Test App' > "$APP_README"
 echo 'This app was automatically created with the Repo Manager' >> "$APP_README"
+
+cd $DIR_APP && git init
+cd $DIR_APP && git add .
+cd $DIR_APP && git commit -m "Added README.md"
+
+
