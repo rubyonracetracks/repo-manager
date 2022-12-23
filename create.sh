@@ -14,9 +14,13 @@ echo 'This app was automatically created with the Repo Manager' >> "$APP_README"
 git config --global user.email 'ci@example.com'
 git config --global user.name "Continuous Integration"
 
-cd $DIR_APP && git init
-cd $DIR_APP && git branch -m main
-cd $DIR_APP && git add .
-cd $DIR_APP && git commit -m "Added README.md"
+git_start {
+  git init
+  git branch -m main
+  git add .
+  git commit -m "Added README.md"
+}
 
-gh repo create "rails-neutrino-output-$APP_TYPE$RAILS_VERSION/$APP_NAME" --public
+cd $DIR_APP && git_start
+
+curl -u 'jhsu802701' "https://api.github.com/orgs/$ORG_NAME/repos" -d '{"name":"$NAME_OF_REPO", "description":"Dummy test app", "private": false, "has_issues": false, "has_projects": false, "has_wiki":false }'
