@@ -23,4 +23,10 @@ git_start () {
 
 cd $DIR_APP && git_start
 
-curl -u 'jhsu802701' "https://api.github.com/orgs/$ORG_NAME/repos" -d '{"name":"$NAME_OF_REPO", "description":"Dummy test app", "private": false, "has_issues": false, "has_projects": false, "has_wiki":false }'
+gh api \
+  --method POST \
+  -H "Accept: application/vnd.github+json" \
+  /orgs/$ORG_NAME/repos \
+  -f name="$REPO_NAME" \
+ -f description='Dummy test repository' \
+ -F private=false
