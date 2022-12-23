@@ -14,7 +14,7 @@ jobs:
         APP_TYPE: ['api', 'static', 'full']
 
     env:
-      LENGTH_CI: ${{ matrix.LENGTH }}
+      APP_TYPE_CI: ${{ matrix.APP_TYPE }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
