@@ -21,7 +21,19 @@ git_start () {
   git commit -m "Added README.md"
 }
 
+echo '-----------------------'
+echo 'BEGIN: creating the app'
+echo '-----------------------'
+wait
 cd $DIR_APP && git_start
+wait
+echo '--------------------------'
+echo 'FINISHED: creating the app'
+echo '--------------------------'
+
+echo "Name of application: $APP_NAME"
+echo "Name of repository: $REPO_NAME"
+echo "Name of organization: $ORG_NAME"
 
 gh api \
   --method POST \
