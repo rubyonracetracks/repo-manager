@@ -14,7 +14,7 @@ echo 'This app was automatically created with the Repo Manager' >> "$APP_README"
 git config --global user.email 'ci@example.com'
 git config --global user.name "Continuous Integration"
 
-git_start {
+git_start () {
   git init
   git branch -m main
   git add .
