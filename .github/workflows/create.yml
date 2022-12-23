@@ -14,8 +14,8 @@ jobs:
         APP_TYPE: ['api', 'static', 'full']
 
     env:
-      - LENGTH_CI: ${{ matrix.LENGTH }}
-      - GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      LENGTH_CI: ${{ matrix.LENGTH }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - uses: actions/checkout@v3
