@@ -11,6 +11,9 @@ mkdir -p $DIR_APP
 echo '# Simple Empty Test App' > "$APP_README"
 echo 'This app was automatically created with the Repo Manager' >> "$APP_README"
 
+git config --global user.email 'ci@example.com'
+git config --global user.name "Continuous Integration"
+
 cd $DIR_APP && git init
 cd $DIR_APP && git add .
 cd $DIR_APP && git commit -m "Added README.md"
