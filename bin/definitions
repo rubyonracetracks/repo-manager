@@ -12,7 +12,6 @@ RAILS_VERSION=`cat params/rails_version.txt`
 
 TIME_STAMP=`date -u +%Y-%m%d-%H%M%S`
 
-APP_NAME=''
 APP_NAME="test$RAILS_VERSION$MODE-$TIME_STAMP"
 
 DIR_APP="$DIR_MAIN/$APP_NAME"
