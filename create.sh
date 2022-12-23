@@ -19,4 +19,4 @@ cd $DIR_APP && git branch -m main
 cd $DIR_APP && git add .
 cd $DIR_APP && git commit -m "Added README.md"
 
-gh repo create "rails-neutrino-output-$APP_TYPE$RAILS_VERSION/$APP_NAME" --public --repo 
+gh repo create "rails-neutrino-output-$APP_TYPE$RAILS_VERSION/$APP_NAME" --public
