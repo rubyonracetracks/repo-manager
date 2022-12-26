@@ -14,9 +14,31 @@ echo 'This app was automatically created with the Repo Manager' >> "$APP_README"
 git config --global user.email 'ci@example.com'
 git config --global user.name "Continuous Integration"
 
-cd $DIR_APP && git init
-cd $DIR_APP && git branch -m main
-cd $DIR_APP && git add .
-cd $DIR_APP && git commit -m "Added README.md"
+git_start () {
+  git init
+  git branch -m main
+  git add .
+  git commit -m "Added README.md"
+}
 
+echo '-----------------------'
+echo 'BEGIN: creating the app'
+echo '-----------------------'
+wait
+cd $DIR_APP && git_start
+wait
+echo '--------------------------'
+echo 'FINISHED: creating the app'
+echo '--------------------------'
 
+echo "Name of application: $APP_NAME"
+echo "Name of repository: $REPO_NAME"
+echo "Name of organization: $ORG_NAME"
+
+gh api \
+  --method POST \
+  -H "Accept: application/vnd.github+json" \
+  /orgs/$ORG_NAME/repos \
+  -f name="$REPO_NAME" \
+ -f description='Dummy test repository' \
+ -F private=false
