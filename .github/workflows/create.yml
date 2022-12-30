@@ -6,7 +6,7 @@ on:
     - cron: '13 12 * * *'
 
 jobs:
-  build:
+  create:
     runs-on: ubuntu-latest
 
     strategy:
