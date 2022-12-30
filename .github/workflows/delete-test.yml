@@ -1,4 +1,4 @@
-name: Create
+name: Delete
 
 on:
   push:
