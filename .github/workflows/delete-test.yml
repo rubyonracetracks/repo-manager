@@ -1,0 +1,24 @@
+name: Create
+
+on:
+  push:
+  schedule:
+    - cron: '01 12 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        APP_TYPE: ['api', 'static', 'full']
+
+    env:
+      APP_TYPE_CI: ${{ matrix.APP_TYPE }}
+      GITHUB_TOKEN: ${{ secrets.SPECIAL_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Delete test apps
+        run: bash delete-test.sh
