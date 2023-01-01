@@ -20,5 +20,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Provisioning
+        run: bin/provision
+
       - name: Delete test apps
         run: bash delete-test.sh
