@@ -10,7 +10,7 @@ source bin/definitions
 echo "Name of organization: $ORG_NAME"
 echo ''
 echo "List of repositories under $ORG_NAME:"
-curl -s https://api.github.com/orgs/$ORG_NAME/repos | jq '.' | jq '.name'
+curl -s https://api.github.com/orgs/$ORG_NAME/repos | jq '.' | jq '.' | jq '.'
 
 # gh api \
   # --method POST \
