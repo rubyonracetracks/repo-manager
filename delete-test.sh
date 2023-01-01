@@ -8,6 +8,9 @@ set -eo pipefail
 source bin/definitions
 
 echo "Name of organization: $ORG_NAME"
+echo ''
+echo "List of repositories under $ORG_NAME:"
+curl https://api.github.com/orgs/$ORG_NAME/repos
 
 # gh api \
   # --method POST \
