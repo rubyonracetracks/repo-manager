@@ -9,16 +9,14 @@ source bin/definitions
 
 echo "Name of organization: $ORG_NAME"
 echo ''
-echo "List of repositories under $ORG_NAME:"
 REPO_JSON=$(curl -s https://api.github.com/orgs/$ORG_NAME/repos | jq '.[]' | jq '.name')
 for REPO_NAME in $REPO_JSON; do
-  echo "NAME: $REPO_NAME"
+  echo "Deleting $REPO_NAME"
+  gh api \
+  --method DELETE \
+  -H "Accept: application/vnd.github+json" \
+  /orgs/$ORG_NAME/repos \
+  -f name="$REPO_NAME" \
 done
 
-# gh api \
-  # --method POST \
-  # -H "Accept: application/vnd.github+json" \
-  # /orgs/$ORG_NAME/repos \
-  # -f name="$REPO_NAME" \
-  # -f description='Dummy test repository' \
-  # -F private=false
+
