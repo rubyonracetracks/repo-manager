@@ -16,7 +16,7 @@ for REPO_NAME in $REPO_JSON; do
   --method DELETE \
   -H "Accept: application/vnd.github+json" \
   /orgs/$ORG_NAME/repos \
-  -f name="$REPO_NAME" \
+  -f name="$REPO_NAME"
 done
 
 
