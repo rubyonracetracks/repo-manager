@@ -9,6 +9,7 @@ set -eo pipefail
 DIR_MAIN=$PWD
 
 RAILS_VERSION=`cat params/rails_version.txt`
+OWNER=`cat params/owner.txt`
 
 TIME_STAMP=`date -u +%Y-%m%d-%H%M%S`
 
