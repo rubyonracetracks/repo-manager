@@ -1,12 +1,12 @@
-name: Create
+name: Delete
 
 on:
   push:
   schedule:
-    - cron: '13 12 * * *'
+    - cron: '01 12 * * *'
 
 jobs:
-  create:
+  delete:
     runs-on: ubuntu-latest
 
     strategy:
@@ -20,5 +20,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Create the app
-        run: bash create.sh
+      - name: Provisioning
+        run: bin/provision
+
+      - name: Delete test apps
+        run: bash delete-test.sh

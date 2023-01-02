@@ -40,5 +40,5 @@ gh api \
   -H "Accept: application/vnd.github+json" \
   /orgs/$ORG_NAME/repos \
   -f name="$REPO_NAME" \
- -f description='Dummy test repository' \
- -F private=false
+  -f description='Dummy test repository' \
+  -F private=false
