@@ -9,8 +9,6 @@ source bin/definitions
 
 echo "Name of organization: $ORG_NAME"
 echo ''
-echo "Owner: $OWNER"
-echo ''
 REPO_JSON=$(curl -s https://api.github.com/orgs/$ORG_NAME/repos | jq '.[]' | jq '.name')
 for REPO_NAME_WITH_QUOTES in $REPO_JSON; do
   REPO_NAME=`sed -e 's/^"//' -e 's/"$//' <<<"$REPO_NAME_WITH_QUOTES"` 
@@ -19,6 +17,6 @@ for REPO_NAME_WITH_QUOTES in $REPO_JSON; do
     gh api \
       --method DELETE \
       -H "Accept: application/vnd.github+json" \
-      /repos/$OWNER/$REPO_NAME
+      /repos/$ORG_NAME/$REPO_NAME
   fi
 done
