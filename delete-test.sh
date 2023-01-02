@@ -11,12 +11,14 @@ echo "Name of organization: $ORG_NAME"
 echo ''
 REPO_JSON=$(curl -s https://api.github.com/orgs/$ORG_NAME/repos | jq '.[]' | jq '.name')
 for REPO_NAME in $REPO_JSON; do
-  echo "Deleting $REPO_NAME"
-  gh api \
-  --method DELETE \
-  -H "Accept: application/vnd.github+json" \
-  /orgs/$ORG_NAME/repos \
-  -f name="$REPO_NAME"
+  if [[ "$REPO_NAME" == *'test'* ]]; then
+    echo "Deleting $REPO_NAME"
+    gh api \
+      --method DELETE \
+      -H "Accept: application/vnd.github+json" \
+      /orgs/$ORG_NAME/repos \
+      -f name="$REPO_NAME"
+  fi
 done
 
 
