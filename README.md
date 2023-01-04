@@ -1,5 +1,5 @@
 [![Create](https://github.com/rubyonracetracks/repo-manager/actions/workflows/create.yml/badge.svg)](https://github.com/rubyonracetracks/repo-manager/actions/workflows/create.yml)
-[![Delete](https://github.com/rubyonracetracks/repo-manager/actions/workflows/delete-test.yml/badge.svg)](https://github.com/rubyonracetracks/repo-manager/actions/workflows/delete-test.yml)
+[![DeleteTest](https://github.com/rubyonracetracks/repo-manager/actions/workflows/delete-test.yml/badge.svg)](https://github.com/rubyonracetracks/repo-manager/actions/workflows/delete-test.yml)
 
 # Repository Manager
 
