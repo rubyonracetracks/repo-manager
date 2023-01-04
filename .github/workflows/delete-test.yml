@@ -1,7 +1,6 @@
-name: Delete
+name: DeleteTest
 
 on:
-  push:
   schedule:
     - cron: '01 12 * * *'
 
