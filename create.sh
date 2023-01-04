@@ -42,3 +42,16 @@ gh api \
   -f name="$REPO_NAME" \
   -f description='Dummy test repository' \
   -F private=false
+
+git_upload () {
+  git remote add origin "https://github.com/rails-neutrino-output-$APP_TYPE_CI$RAILS_VERSION/$APP_NAME.git"
+  git push -u origin main
+}
+
+echo '------------------------'
+echo 'BEGIN: uploading the app'
+echo '------------------------'
+cd $DIR_APP && git_upload
+echo '---------------------------'
+echo 'FINISHED: uploading the app'
+echo '---------------------------'
