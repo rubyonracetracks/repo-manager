@@ -26,7 +26,8 @@ echo '-----------------------'
 echo 'BEGIN: creating the app'
 echo '-----------------------'
 wait
-cd $DIR_APP && git_start
+cd $DIR_APP
+git_start
 wait
 echo '--------------------------'
 echo 'FINISHED: creating the app'
