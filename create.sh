@@ -19,6 +19,7 @@ git_start () {
   git branch -m main
   git add .
   git commit -m "Added README.md"
+  git remote add origin "https://github.com/rails-neutrino-output-$APP_TYPE_CI$RAILS_VERSION/$APP_NAME.git"
 }
 
 echo '-----------------------'
@@ -44,7 +45,6 @@ gh api \
   -F private=false
 
 git_upload () {
-  git remote add origin "https://github.com/rails-neutrino-output-$APP_TYPE_CI$RAILS_VERSION/$APP_NAME.git"
   git push -u origin main
 }
 
