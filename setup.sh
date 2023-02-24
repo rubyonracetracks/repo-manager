@@ -26,50 +26,14 @@ wait
 
 echo 'STEP 2: adding the SSH private key to the ssh-agent'
 ssh-add ~/.ssh/id_$TYPE
+echo ''
 
-echo 'STEP 3: Go to https://github.com/settings/keys .'
+# Necessary to establish the authenticity of the host and skip another prompt
+echo 'STEP 3: ssh-keyscan'
+ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+echo 'STEP 4: Go to https://github.com/settings/keys .'
 echo "Copy the contents of $PATHNAME_PUBLIC to SSH Public Keys and"
 echo 'click on "Save".'
 echo 'Press Enter when finished.'
 read
-
-exit 0
-
-# No password needed to log in.
-echo 'STEP 2: ssh-keyscan'  
-ssh-keyscan -H frs.sourceforge.net >> "$HOME/.ssh/known_hosts"
-
-echo 'STEP 3: Go to https://sourceforge.net/auth/shell_services .'
-echo "Copy the contents of $PATHNAME_PUBLIC to SSH Public Keys and"
-echo 'click on "Save".'
-echo 'Press Enter when finished.'
-read
-
-echo ''
-echo 'STEP 4: uploading tmp0/timestamp.txt'
-rsync -avPz -e ssh "tmp0/timestamp.txt" jhsu802701@frs.sourceforge.net:/home/frs/p/swiftlinux/test-upload-manual/$MX_VERSION/
-
-echo ''
-echo "If all went well, the last step (uploading tmp0/timestamp.txt)"
-echo 'proceeded without any input from you.'
-echo ''
-echo 'STEP 5: Configuring GitHub.'
-echo '*  Go to this repository in GitHub.'
-echo '   Go to Settings -> Secrets -> Actions'
-echo '* Copy and paste the contents from your SSH files into the repository secrets.'
-echo '   *  Add any required repository secrets that are not already present.'
-echo '   *  For the repository secrets that are already present, you must update them.'
-echo '   *  Use the chart below as a reference.'
-echo ''
-echo 'Repository Secret | File Contents'
-echo '------------------|----------------------'
-echo "SSH_KNOWN_HOSTS   | $PATHNAME_KNOWN_HOSTS"
-echo '-----------------------------------------'
-echo "SSH_PRIVATE_KEY   | $PATHNAME_PRIVATE"
-echo '-----------------------------------------'
-echo "SSH_PUBLIC_KEY    | $PATHNAME_PUBLIC"
-echo '-----------------------------------------'
-echo ''
-echo 'STEP 6: Run the GitHub Workflow.  If all goes well, the initial test upload works,'
-echo 'which means that you have completed the SSH configuration.'
-echo ''
