@@ -5,11 +5,6 @@
 # as succeeding in spite of errors or failures.
 set -eo pipefail
 
-# Creating the test file to upload
-mkdir -p tmp0
-TIME_STAMP=`date -u +%Y%m%d-%H%M%S`
-echo "$TIME_STAMP" > tmp0/timestamp.txt
-
 TYPE='ed25519'
 FILENAME="id_$TYPE"
 PATHNAME_PRIVATE="$HOME/.ssh/$FILENAME"
@@ -20,7 +15,25 @@ PATHNAME_KNOWN_HOSTS="$HOME/.ssh/known_hosts"
 # Use no password for the SSH key files.
 # Piping in the newline character means automatically pressing enter.
 echo 'STEP 1: generating the SSH key'
-ssh-keygen -t "$TYPE" -N '' -f "$PATHNAME_PRIVATE" -C 'jhsu802701@shell.sf.net' <<<$'\n'
+ssh-keygen -t "$TYPE" -N '' -f "$PATHNAME_PRIVATE" -C 'jhsu802701@jasonhsu.com' <<<$'\n'
+
+wait
+echo '------------'
+echo 'ssh-agent -s'
+eval "$(ssh-agent -s)"
+echo ''
+wait
+
+echo 'STEP 2: adding the SSH private key to the ssh-agent'
+ssh-add ~/.ssh/id_$TYPE
+
+echo 'STEP 3: Go to https://github.com/settings/keys .'
+echo "Copy the contents of $PATHNAME_PUBLIC to SSH Public Keys and"
+echo 'click on "Save".'
+echo 'Press Enter when finished.'
+read
+
+exit 0
 
 # No password needed to log in.
 echo 'STEP 2: ssh-keyscan'  
