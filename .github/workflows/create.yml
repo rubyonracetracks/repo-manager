@@ -22,3 +22,6 @@ jobs:
 
       - name: Create the app
         run: bash create.sh
+
+      - name: Upload the app
+        run: bash upload.sh
