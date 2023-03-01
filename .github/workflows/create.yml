@@ -23,5 +23,5 @@ jobs:
       - name: Create the app
         run: bash create.sh
 
-      - name: Upload the app
-        run: bash upload.sh
+      - name: Create the app in GitHub
+        run: bash create-github.sh
