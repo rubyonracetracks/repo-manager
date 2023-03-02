@@ -10,7 +10,12 @@ DIR_MAIN=$PWD
 
 RAILS_VERSION=`cat params/rails_version.txt`
 
-TIME_STAMP=`date -u +%Y-%m%d-%H%M%S`
+if [ ! -f "$DIR_MAIN/tmp/timestamp.txt" ]
+then
+  TIME_STAMP=`date -u +%Y-%m%d-%H%M%S`
+  echo "$TIME_STAMP" > "$DIR_MAIN/tmp/timestamp.txt"
+fi
+TIME_STAMP=`cat tmp/timestamp.txt`
 
 APP_NAME="test$RAILS_VERSION-$TIME_STAMP"
 REPO_NAME="$APP_NAME"
