@@ -11,12 +11,4 @@ echo "Name of application: $APP_NAME"
 echo "Name of repository: $REPO_NAME"
 echo "Name of organization: $ORG_NAME"
 
-echo ''
-echo 'Creating the repository in GitHub'
-gh api \
-  --method POST \
-  -H "Accept: application/vnd.github+json" \
-  /orgs/$ORG_NAME/repos \
-  -f name="$REPO_NAME" \
-  -f description='Dummy test repository' \
-  -F private=false
+echo 'Pushing the app to GitHub'

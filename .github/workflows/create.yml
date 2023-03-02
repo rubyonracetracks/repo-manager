@@ -25,3 +25,6 @@ jobs:
 
       - name: Create the app in GitHub
         run: bash create-github.sh
+
+      - name: Configure SSH
+        run: bin/config-ssh 'ed25519'
