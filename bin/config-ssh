@@ -5,7 +5,7 @@
 # as succeeding in spite of errors or failures.
 set -eo pipefail
 
-source definitions.sh
+bin/definitions
 
 SSH_FILENAME="$1"
 PATH_SSH_PRIVATE_KEY="$HOME/.ssh/id_$SSH_FILENAME"
