@@ -12,3 +12,5 @@ echo "Name of repository: $REPO_NAME"
 echo "Name of organization: $ORG_NAME"
 
 echo 'Pushing the app to GitHub'
+
+cd $DIR_APP && git_push origin main

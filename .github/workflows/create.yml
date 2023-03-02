@@ -32,3 +32,6 @@ jobs:
           SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
           SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
         run: bin/config-ssh 'ed25519'
+
+      - name: Git Push
+        run: bash push.sh
