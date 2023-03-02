@@ -13,4 +13,7 @@ echo "Name of organization: $ORG_NAME"
 
 echo 'Pushing the app to GitHub'
 
+pwd
+ls -l
+
 cd $DIR_APP && git_push origin main
