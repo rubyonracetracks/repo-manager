@@ -23,6 +23,8 @@ git_start () {
   wait
   git branch -M main
   wait
+  git remote add origin "git@github.com:$ORG_NAME/$APP_NAME.git"
+  wait
 }
 
 echo '-----------------------'
