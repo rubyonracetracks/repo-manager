@@ -8,17 +8,23 @@ set -eo pipefail
 source bin/definitions
 
 mkdir -p $DIR_APP
-echo '# Simple Empty Test App' > "$APP_README"
-echo 'This app was automatically created with the Repo Manager' >> "$APP_README"
-
 git config --global user.email 'ci@example.com'
 git config --global user.name "Continuous Integration"
 
 git_start () {
+  echo '# Simple Empty Test App' > "$APP_README"
+  echo 'This app was automatically created with Repo Manager.' >> "$APP_README"
+  wait
   git init
-  git branch -m main
+  wait
   git add .
+  wait
   git commit -m "Added README.md"
+  wait
+  git branch -M main
+  wait
+  git remote add origin "git@github.com:$ORG_NAME/$APP_NAME.git"
+  wait
 }
 
 echo '-----------------------'
@@ -34,11 +40,3 @@ echo '--------------------------'
 echo "Name of application: $APP_NAME"
 echo "Name of repository: $REPO_NAME"
 echo "Name of organization: $ORG_NAME"
-
-gh api \
-  --method POST \
-  -H "Accept: application/vnd.github+json" \
-  /orgs/$ORG_NAME/repos \
-  -f name="$REPO_NAME" \
-  -f description='Dummy test repository' \
-  -F private=false

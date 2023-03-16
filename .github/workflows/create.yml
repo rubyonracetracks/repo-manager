@@ -22,3 +22,16 @@ jobs:
 
       - name: Create the app
         run: bash create.sh
+
+      - name: Create the app in GitHub
+        run: bash create-github.sh
+
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+        run: bin/config-ssh 'ed25519'
+
+      - name: Git Push
+        run: bash push.sh
