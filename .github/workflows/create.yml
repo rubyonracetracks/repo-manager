@@ -24,7 +24,7 @@ jobs:
         run: bash create.sh
 
       - name: Create the app in GitHub
-        run: bash create-github.sh
+        run: bin/create-github
 
       - name: Configure SSH
         env:
