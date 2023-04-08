@@ -15,7 +15,7 @@ jobs:
 
     env:
       APP_TYPE_CI: ${{ matrix.APP_TYPE }}
-      GITHUB_TOKEN: ${{ secrets.SPECIAL_TOKEN }}
+      GH_TOKEN: ${{ secrets.SPECIAL_TOKEN }}
 
     steps:
       - uses: actions/checkout@v3
