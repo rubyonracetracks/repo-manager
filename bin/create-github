@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# NOTE: set -o pipefail is needed to ensure that any error or failure causes the whole pipeline to fail.
+# Without this specification, the CI status will provide a false sense of security by showing builds
+# as succeeding in spite of errors or failures.
+set -eo pipefail
+
+ORG_NAME="$1"
+REPO_NAME="$2"
+DESCRIPTION="$3"
+
+echo '----------------------------------------'
+echo 'BEGIN: Creating the repository in GitHub'
+echo '----------------------------------------'
+echo "Organization name: $ORG_NAME"
+echo "Repository name: $REPO_NAME"
+echo "Description: $DESCRIPTION"
+wait
+
+gh api \
+  --method POST \
+  -H "Accept: application/vnd.github+json" \
+  /orgs/$ORG_NAME/repos \
+  -f name="$REPO_NAME" \
+  -f description="$DESCRIPTION" \
+  -F private=false
+
+wait
+echo '-------------------------------------------'
+echo 'FINISHED: Creating the repository in GitHub'
+echo '-------------------------------------------'
