@@ -5,18 +5,27 @@
 # as succeeding in spite of errors or failures.
 set -eo pipefail
 
-source bin/definitions
+ORG_NAME="$1"
+REPO_NAME="$2"
+DESCRIPTION="$3"
 
-echo "Name of application: $APP_NAME"
-echo "Name of repository: $REPO_NAME"
-echo "Name of organization: $ORG_NAME"
+echo '----------------------------------------'
+echo 'BEGIN: Creating the repository in GitHub'
+echo '----------------------------------------'
+echo "Organization name: $ORG_NAME"
+echo "Repository name: $REPO_NAME"
+echo "Description: $DESCRIPTION"
+wait
 
-echo ''
-echo 'Creating the repository in GitHub'
 gh api \
   --method POST \
   -H "Accept: application/vnd.github+json" \
   /orgs/$ORG_NAME/repos \
   -f name="$REPO_NAME" \
-  -f description='Dummy test repository' \
+  -f description="$DESCRIPTION" \
   -F private=false
+
+wait
+echo '-------------------------------------------'
+echo 'FINISHED: Creating the repository in GitHub'
+echo '-------------------------------------------'
