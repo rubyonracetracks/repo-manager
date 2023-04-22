@@ -11,7 +11,10 @@ This repository is used for managing the repositories automatically created by R
 * Use the "cd" command to enter this repository's root directory.
 * Run the setup script by entering the command "bash setup.sh".  Follow the instructions provided for setting the repository secrets.
 
-
+## Organizations Containing the Apps Created/Deleted By This Repository
+* [rails-neutrino-output-api7](https://github.com/orgs/rails-neutrino-output-api7/repositories)
+* [rails-neutrino-output-static7](https://github.com/orgs/rails-neutrino-output-static7/repositories)
+* [rails-neutrino-output-full7](https://github.com/orgs/rails-neutrino-output-full7/repositories)
 
 ## Parameters To Set
 The following repository secrets need to be set:
