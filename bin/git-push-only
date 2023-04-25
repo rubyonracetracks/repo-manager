@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# NOTE: set -o pipefail is needed to ensure that any error or failure causes the whole pipeline to fail.
+# Without this specification, the CI status will provide a false sense of security by showing builds
+# as succeeding in spite of errors or failures.
+set -eo pipefail
+
+DATE1=`date`
+APP_NAME='repo-manager-sample-app'
+APP_DIR="$PWD/$APP_NAME"
+APP_README="$APP_DIR/README.md"
+REPO_URL="https://github.com/rubyonracetracks/$APP_NAME"
+
+git clone "$REPO_URL"
+
+echo '# Repo Manager Sample App' > "$APP_README"
+
+echo '## Purpose of this App' >> "$APP_README"
+echo '* The purpose of this app is to verify that the repo-manager repo' >> "$APP_README"
+echo '(https://github.com/rubyonracetracks/repo-manager) is properly configured.' >> "$APP_README"
+echo 'This mans that the SSH_KNOWN_HOSTS, SSH_PRIVATE_KEY, and SSH_PUBLIC_KEY' >> "$APP_README"
+echo 'parameters must be properly set.'
+
+echo '## Time Stamp' >> "$APP_README"
+echo 'This app was last updated at' >> "$APP_README"
+echo "$DATE1" >> "$APP_README"
+echo "\n" >> "$APP_README"
+
+git_actions () {
+  git add .
+  git commit -m "Updated at $DATE1"
+  git push origin "$REPO_URL"
+}
+
+cd "$APP_DIR" && git_actions

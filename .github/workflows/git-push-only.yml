@@ -1,0 +1,23 @@
+name: Create Empty GitHub Repo
+
+on:
+  push:
+  schedule:
+    - cron: '16 12 * * *'
+
+jobs:
+  create:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Configure SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+        run: bin/config-ssh 'ed25519'
+
+      - name: Edit the Repo Manager Sample App and push it to GitHub
+        run: bin/git-push-only
