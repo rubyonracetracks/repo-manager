@@ -31,7 +31,7 @@ echo "\n" >> "$APP_README"
 git_actions () {
   git add .
   git commit -m "Updated at $DATE1"
-  git push origin "$REPO_URL"
+  git push origin main
 }
 
 cd "$APP_DIR" && git_actions
