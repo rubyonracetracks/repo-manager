@@ -9,7 +9,7 @@ DATE1=`date`
 APP_NAME='repo-manager-sample-app'
 APP_DIR="$PWD/$APP_NAME"
 APP_README="$APP_DIR/README.md"
-REPO_URL="https://github.com/rubyonracetracks/$APP_NAME"
+REPO_URL="git@github.com:rubyonracetracks/$APP_NAME.git"
 
 bin/git-config
 
