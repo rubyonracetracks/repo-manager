@@ -13,8 +13,14 @@ REPO_URL="https://github.com/rubyonracetracks/$APP_NAME"
 
 bin/git-config
 
+wait
+echo '-------------------'
+echo "git clone $REPO_URL"
+echo '-------------------'
 git clone "$REPO_URL"
+wait
 
+echo ""
 echo '# Repo Manager Sample App' > "$APP_README"
 
 echo '## Purpose of this App' >> "$APP_README"
@@ -29,9 +35,22 @@ echo "$DATE1" >> "$APP_README"
 echo "\n" >> "$APP_README"
 
 git_actions () {
+  wait
+  echo '-------'
+  echo 'git add'
+  echo '-------'
   git add .
+  wait
+  echo '----------'
+  echo 'git commit'
+  echo '----------'
   git commit -m "Updated at $DATE1"
+  wait
+  echo '--------'
+  echo 'git push'
+  echo '--------'
   git push origin main
+  wait
 }
 
 cd "$APP_DIR" && git_actions
