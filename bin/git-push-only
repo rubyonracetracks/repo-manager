@@ -11,6 +11,8 @@ APP_DIR="$PWD/$APP_NAME"
 APP_README="$APP_DIR/README.md"
 REPO_URL="https://github.com/rubyonracetracks/$APP_NAME"
 
+bin/git-config
+
 git clone "$REPO_URL"
 
 echo '# Repo Manager Sample App' > "$APP_README"

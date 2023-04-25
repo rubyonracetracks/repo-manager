@@ -8,8 +8,7 @@ set -eo pipefail
 source bin/definitions
 
 mkdir -p $DIR_APP
-git config --global user.email 'ci@example.com'
-git config --global user.name "Continuous Integration"
+bin/git-config
 
 git_start () {
   echo '# Simple Empty Test App' > "$APP_README"
