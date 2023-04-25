@@ -1,4 +1,4 @@
-name: Create Empty GitHub Repo
+name: Git Push Only
 
 on:
   push:
