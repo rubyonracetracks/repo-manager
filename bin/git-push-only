@@ -27,7 +27,7 @@ echo '## Purpose of this App' >> "$APP_README"
 echo '* The purpose of this app is to verify that the repo-manager repo' >> "$APP_README"
 echo '(https://github.com/rubyonracetracks/repo-manager) is properly configured.' >> "$APP_README"
 echo 'This mans that the SSH_KNOWN_HOSTS, SSH_PRIVATE_KEY, and SSH_PUBLIC_KEY' >> "$APP_README"
-echo 'parameters must be properly set.'
+echo 'parameters must be properly set.' >> "$APP_README"
 
 echo '## Time Stamp' >> "$APP_README"
 echo 'This app was last updated at' >> "$APP_README"
