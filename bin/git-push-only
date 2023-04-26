@@ -32,7 +32,6 @@ echo 'parameters must be properly set.' >> "$APP_README"
 echo '## Time Stamp' >> "$APP_README"
 echo 'This app was last updated at' >> "$APP_README"
 echo "$DATE1." >> "$APP_README"
-echo '\n' >> "$APP_README"
 
 git_actions () {
   wait
