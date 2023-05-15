@@ -13,10 +13,6 @@ REPO_JSON=$(curl -s https://api.github.com/orgs/$ORG_NAME/repos | jq '.[]' | jq 
 for REPO_NAME_WITH_QUOTES in $REPO_JSON; do
   REPO_NAME=`sed -e 's/^"//' -e 's/"$//' <<<"$REPO_NAME_WITH_QUOTES"` 
   if [[ "$REPO_NAME" == *'test'* ]]; then
-    echo "Deleting $REPO_NAME"
-    gh api \
-      --method DELETE \
-      -H "Accept: application/vnd.github+json" \
-      /repos/$ORG_NAME/$REPO_NAME
+    bin/gh-api-delete-repo "$ORG_NAME" "$REPO_NAME"
   fi
 done
