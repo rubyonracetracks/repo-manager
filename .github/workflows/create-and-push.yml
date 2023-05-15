@@ -34,4 +34,4 @@ jobs:
         run: bin/config-ssh 'ed25519'
 
       - name: Git Push
-        run: bash push.sh
+        run: bin/push
