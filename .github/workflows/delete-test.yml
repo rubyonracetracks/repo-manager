@@ -1,4 +1,4 @@
-name: DeleteTest
+name: Delete Test Apps
 
 on:
   schedule:
@@ -23,4 +23,4 @@ jobs:
         run: bin/provision
 
       - name: Delete test apps
-        run: bash delete-test.sh
+        run: bin/delete-test-apps
