@@ -1,4 +1,4 @@
-name: Create
+name: Create and Push
 
 on:
   push:
